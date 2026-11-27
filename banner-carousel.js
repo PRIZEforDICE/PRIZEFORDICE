@@ -20,6 +20,8 @@
   dots.setAttribute('aria-label', 'เลือกแบนเนอร์');
   const slideLinks = [];
   const dotButtons = [];
+  let active = 0;
+  let timer;
 
   slides.forEach((slide, index) => {
     const link = document.createElement('a');
@@ -66,9 +68,9 @@
 
   carousel.append(track, previous, next, dots);
   original.replaceWith(carousel);
+  const main = carousel.closest('main');
+  if (main) main.prepend(carousel);
 
-  let active = 0;
-  let timer;
   function show(index, resetTimer = false) {
     active = index;
     slideLinks.forEach((link, i) => {
@@ -77,7 +79,7 @@
       link.setAttribute('aria-hidden', String(!selected));
       dotButtons[i].setAttribute('aria-current', String(selected));
     });
-    if (resetTimer) restart();
+    if (resetTimer) start();
   }
   function stop() { window.clearInterval(timer); }
   function start() {
@@ -85,7 +87,6 @@
     if (slides.length < 2 || document.hidden || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     timer = window.setInterval(() => show((active + 1) % slides.length), 5000);
   }
-  function restart() { start(); }
 
   carousel.addEventListener('mouseenter', stop);
   carousel.addEventListener('mouseleave', start);
