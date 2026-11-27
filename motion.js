@@ -1,6 +1,10 @@
 (() => {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.body.classList.add('motion-ready');
+  const loader = document.createElement('script');
+  loader.src = 'site-extras-loader.js?v=community-news-v2';
+  loader.defer = true;
+  document.body.append(loader);
   if (reduced) return;
 
   const intro = document.createElement('div');
