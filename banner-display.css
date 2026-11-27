@@ -1,1 +1,15 @@
-/* legacy override retained as an empty compatibility file; ratio is 16:9 in banner-carousel.css */
+/* Enforce the requested 1600x900 (16:9) responsive banner, above all homepage content. */
+.banner-carousel{position:relative!important;display:block!important;width:100%!important;height:auto!important;aspect-ratio:16/9!important;overflow:hidden!important;margin:0 0 28px!important;border-radius:20px;background:#eee7fc;box-shadow:0 16px 42px rgba(72,43,130,.12);isolation:isolate}
+.banner-carousel-slides,.banner-carousel-slide{position:absolute;inset:0}
+.banner-carousel-slide{display:block;opacity:0;visibility:hidden;transition:opacity .55s ease}
+.banner-carousel-slide.is-active{opacity:1;visibility:visible;z-index:1}
+.banner-carousel-slide img{display:block;width:100%;height:100%;object-fit:contain;background:#eee7fc}
+.banner-carousel-control{position:absolute;z-index:3;top:50%;transform:translateY(-50%);width:44px;height:44px;display:grid;place-items:center;border:1px solid #ffffff99;border-radius:50%;background:#211936a6;color:#fff;font:600 26px/1 'IBM Plex Sans Thai',sans-serif;cursor:pointer;backdrop-filter:blur(8px);transition:background .2s,transform .2s}
+.banner-carousel-control:hover{background:#211936e6;transform:translateY(-50%) scale(1.06)}
+.banner-carousel-control:focus-visible,.banner-carousel-dot:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.banner-carousel-control.prev{left:16px}.banner-carousel-control.next{right:16px}
+.banner-carousel-dots{position:absolute;z-index:3;left:50%;bottom:16px;display:flex;gap:9px;transform:translateX(-50%);padding:8px 12px;border-radius:999px;background:#21193666;backdrop-filter:blur(8px)}
+.banner-carousel-dot{width:10px;height:10px;padding:0;border:0;border-radius:50%;background:#ffffffa8;cursor:pointer;transition:transform .2s,background .2s}
+.banner-carousel-dot[aria-current=true]{background:#fff;transform:scale(1.25)}
+@media(max-width:600px){.banner-carousel{margin-bottom:20px!important;border-radius:14px}.banner-carousel-control{width:36px;height:36px;font-size:21px}.banner-carousel-control.prev{left:9px}.banner-carousel-control.next{right:9px}.banner-carousel-dots{bottom:10px;gap:8px;padding:6px 10px}.banner-carousel-dot{width:8px;height:8px}}
+@media(prefers-reduced-motion:reduce){.banner-carousel-slide{transition:none}}

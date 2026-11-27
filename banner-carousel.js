@@ -1,11 +1,19 @@
 (() => {
-  const original = document.querySelector('.banner-link');
-  if (!original) return;
-
   const slides = [
     { image: 'BANNER-TEACHME.png', alt: 'DICERED feat. GALCHANIE - Teach Me', url: 'https://dicesonray.lnk.to/TeachMe' },
     { image: 'BANNER-SISTER.png', alt: 'DICEBLUE - รอ SIS (TER)', url: 'https://dicesonray.lnk.to/TER' }
   ];
+  const main = document.querySelector('body[data-page="home"] main');
+  if (!main) return;
+
+  // Use the homepage's banner link when present, or create a mount point at the top.
+  let original = main.querySelector('.banner-link');
+  if (!original) {
+    original = document.createElement('span');
+    original.className = 'banner-link';
+    main.prepend(original);
+  }
+
   const carousel = document.createElement('section');
   carousel.className = 'banner-carousel';
   carousel.setAttribute('role', 'region');
@@ -68,8 +76,7 @@
 
   carousel.append(track, previous, next, dots);
   original.replaceWith(carousel);
-  const main = carousel.closest('main');
-  if (main) main.prepend(carousel);
+  main.prepend(carousel);
 
   function show(index, resetTimer = false) {
     active = index;
@@ -97,7 +104,6 @@
     if (event.key === 'ArrowLeft') { event.preventDefault(); show((active - 1 + slides.length) % slides.length, true); }
     if (event.key === 'ArrowRight') { event.preventDefault(); show((active + 1) % slides.length, true); }
   });
-
   show(0);
   start();
 })();
