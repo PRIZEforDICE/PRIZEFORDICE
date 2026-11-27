@@ -1,0 +1,4 @@
+/* Match the reference: panoramic, edge-to-edge carousel with cover-cropped 16:9 source images. */
+.banner-carousel{aspect-ratio:3.32/1;border-radius:12px;box-shadow:0 12px 30px rgba(32,24,44,.12)}
+.banner-carousel-slide img{object-fit:cover;object-position:center 45%}
+@media(max-width:700px){.banner-carousel{aspect-ratio:16/9;border-radius:12px}.banner-carousel-slide img{object-position:center}}
