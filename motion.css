@@ -1,0 +1,25 @@
+/* Cinematic PRIZE arrival and lightweight page-wide reveals. */
+.motion-intro{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 50% 45%,#54358a 0,#241539 42%,#110d1b 100%);animation:intro-exit .75s 2.05s cubic-bezier(.7,0,.2,1) forwards;pointer-events:none}
+.motion-intro::before{content:"";position:absolute;inset:-25%;background:conic-gradient(from 25deg,transparent 0 18%,#ffffff10 20%,transparent 23% 47%,#d4b8ff16 50%,transparent 54% 76%,#ffffff0d 80%,transparent 84%);animation:intro-rays 5s linear infinite}
+.motion-logo{position:relative;z-index:2;width:min(240px,55vw);height:auto;max-height:110px;object-fit:contain;opacity:0;filter:drop-shadow(0 0 20px #cfb5ff99);animation:logo-arrive .95s .18s cubic-bezier(.16,1,.3,1) forwards,logo-glow 1.3s 1s ease-in-out infinite alternate}
+.motion-die{position:absolute;z-index:3;left:calc(50% - 23px);top:calc(50% + 73px);width:46px;height:46px;border-radius:12px;background-color:#fff;background-image:radial-gradient(circle at 25% 25%,#7046c8 0 3px,transparent 3.6px),radial-gradient(circle at 75% 25%,#7046c8 0 3px,transparent 3.6px),radial-gradient(circle at 50% 50%,#7046c8 0 3px,transparent 3.6px),radial-gradient(circle at 25% 75%,#7046c8 0 3px,transparent 3.6px),radial-gradient(circle at 75% 75%,#7046c8 0 3px,transparent 3.6px);box-shadow:0 10px 0 #9c79dc,0 18px 34px #0006;opacity:0;animation:die-arrive .85s .45s cubic-bezier(.16,1,.3,1) forwards,die-roll 1.15s 1s ease-in-out forwards}
+.motion-intro.is-leaving{visibility:hidden}
+.motion-intro.is-leaving .motion-logo,.motion-intro.is-leaving .motion-die{opacity:0}
+.motion-intro.is-skipped{display:none}
+body.motion-ready .topbar{animation:nav-arrive .65s .08s both cubic-bezier(.2,.8,.2,1)}
+body.motion-ready main>.hero{animation:hero-arrive .9s .12s both cubic-bezier(.16,1,.3,1)}
+body.motion-ready main>.banner-carousel{animation:banner-arrive .9s .1s both cubic-bezier(.16,1,.3,1)}
+body.motion-ready main>.page-title,body.motion-ready main>.intro{animation:hero-arrive .65s .12s both cubic-bezier(.16,1,.3,1)}
+.motion-reveal{opacity:0;transform:translateY(22px) scale(.99);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.75,.2,1)}
+.motion-reveal.is-visible{opacity:1;transform:translateY(0) scale(1)}
+.motion-stagger>*{--stagger-delay:calc(var(--item-index,0)*75ms);transition-delay:var(--stagger-delay)}
+@keyframes intro-exit{0%{opacity:1;visibility:visible}72%{opacity:1}100%{opacity:0;visibility:hidden}}
+@keyframes intro-rays{to{transform:rotate(360deg) scale(1.05)}}
+@keyframes logo-arrive{0%{opacity:0;transform:translateY(18px) scale(.68);filter:blur(8px) drop-shadow(0 0 0 transparent)}65%{opacity:1;transform:translateY(-3px) scale(1.08);filter:blur(0) drop-shadow(0 0 26px #cfb5ffcc)}100%{opacity:1;transform:translateY(0) scale(1);filter:drop-shadow(0 0 16px #cfb5ff88)}}
+@keyframes logo-glow{to{filter:drop-shadow(0 0 28px #cfb5ffcc)}}
+@keyframes die-arrive{0%{opacity:0;transform:translateY(38px) rotate(-190deg) scale(.3)}70%{opacity:1;transform:translateY(-5px) rotate(25deg) scale(1.12)}100%{opacity:1;transform:translateY(0) rotate(0) scale(1)}}
+@keyframes die-roll{0%,100%{transform:translateY(0) rotate(0)}40%{transform:translateY(-20px) rotate(160deg)}75%{transform:translateY(0) rotate(340deg)}}
+@keyframes nav-arrive{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes hero-arrive{from{opacity:0;transform:translateY(24px) scale(.985);filter:blur(5px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+@keyframes banner-arrive{from{opacity:0;transform:translateY(20px) scale(.975)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(prefers-reduced-motion:reduce){.motion-intro{display:none!important}.motion-reveal{opacity:1;transform:none;transition:none}body.motion-ready .topbar,body.motion-ready main>.hero,body.motion-ready main>.banner-carousel,body.motion-ready main>.page-title,body.motion-ready main>.intro{animation:none!important}}
