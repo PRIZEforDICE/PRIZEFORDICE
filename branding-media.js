@@ -12,21 +12,22 @@
     video.preload = 'metadata';
     video.setAttribute('aria-hidden', 'true');
     video.addEventListener('error', () => {
-      if (!video.dataset.fallbackApplied) {
-        video.dataset.fallbackApplied = 'true';
-        const fallback = document.createElement('img');
-        fallback.src = asset(poster);
-        fallback.alt = name.startsWith('PRIZE') ? 'PRIZE' : 'DICE';
-        fallback.className = className;
-        video.replaceWith(fallback);
-      }
+      if (video.dataset.fallbackApplied) return;
+      video.dataset.fallbackApplied = 'true';
+      const fallback = document.createElement('img');
+      fallback.src = asset(poster);
+      fallback.alt = 'DICE';
+      fallback.className = className;
+      video.replaceWith(fallback);
     }, { once: true });
     video.play().catch(() => {});
     return video;
   };
 
+  // Use the requested black PRIZE logo everywhere the site logo appears.
   document.querySelectorAll('.brand img, .splash-inner img').forEach(image => {
-    image.replaceWith(makeVideo('PRIZE.mp4', image.className, 'PRIZENEW.png'));
+    image.src = asset('PRIZEBLACK.png');
+    image.alt = 'PRIZE';
   });
 
   const homeDice = document.querySelector('.hero-art img');
@@ -37,7 +38,7 @@
 
   if (document.body.dataset.page === 'meaning') {
     const introSplit = document.querySelector('.page .split');
-    if (introSplit) {
+    if (introSplit && !document.querySelector('.dice-identity-gallery')) {
       const gallery = document.createElement('div');
       gallery.className = 'dice-identity-gallery';
       ['DICEPURPLE.png', 'DICEPART.png', 'DICENEW.png'].forEach(file => {
@@ -52,7 +53,7 @@
 
     document.querySelectorAll('.page .cards > .card').forEach(card => {
       const title = card.querySelector('h3')?.textContent.trim();
-      if (title !== 'DICEBLUE' && title !== 'DICERED') return;
+      if ((title !== 'DICEBLUE' && title !== 'DICERED') || card.querySelector('.unit-concept-gallery')) return;
       const files = title === 'DICEBLUE'
         ? ['DICEBLUEIDEA.png', 'DICEBLUEPART.png']
         : ['DICEREDIDEA.png', 'DICEREDPART.png'];
