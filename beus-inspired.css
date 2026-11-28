@@ -1,0 +1,35 @@
+/* Independent clean, community-first visual refresh inspired by contemporary event platforms. */
+:root{--bg:#f7f7fb;--paper:#fff;--ink:#191a22;--muted:#70717c;--line:#e7e7ef;--purple:#6646d8;--lav:#f0edff;--shadow:0 12px 36px rgba(27,25,48,.07);--radius:22px}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans Thai',system-ui,sans-serif;line-height:1.65}
+.wrap{width:min(1160px,calc(100% - 40px));margin-inline:auto}
+.topbar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);border-bottom:1px solid var(--line);box-shadow:none;backdrop-filter:blur(16px)}
+.navrow{min-height:76px;gap:26px}
+.brand{border:0;background:transparent}.brand img,.brand video{width:auto;max-width:180px;max-height:48px;object-fit:contain}
+.navlinks{gap:8px;align-items:center}.navlinks>a{padding:9px 13px;border-radius:12px;color:#44444f;font-weight:600}.navlinks>a:hover,.navlinks>a:focus-visible{background:var(--lav);color:var(--purple);transform:none}
+.menu-toggle{border-radius:12px}
+main.wrap{padding-top:32px;padding-bottom:72px}
+.hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(240px,.7fr);align-items:center;gap:32px;min-height:340px;padding:clamp(28px,5vw,58px);border:1px solid #e8e3ff;border-radius:30px;background:linear-gradient(120deg,#fff 8%,#f8f6ff 67%,#eee9ff);box-shadow:var(--shadow)}
+.hero .eyebrow,.community-hero .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--purple);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.hero h1{max-width:760px;margin:12px 0 0;color:var(--ink);font-size:clamp(34px,5.2vw,64px);line-height:1.2;letter-spacing:-.035em}
+.hero-art{display:grid;place-items:center;min-height:230px;border:0;border-radius:26px;background:linear-gradient(145deg,#ede8ff,#f9f8ff);box-shadow:none}
+.hero-die,.die-button{box-shadow:0 14px 0 #c6b8f5,0 24px 38px #48328c26}
+.section{margin-top:42px;padding:0;border:0;background:transparent;box-shadow:none}
+.section-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
+.section-head h2,.community-panel h2{margin:0;color:var(--ink);font-size:clamp(23px,3vw,32px);letter-spacing:-.025em}
+.page-title{margin:12px 0 4px;color:var(--ink);font-size:clamp(34px,5vw,52px);font-weight:700;letter-spacing:-.04em}
+.intro{max-width:760px;color:var(--muted);font-size:17px}
+.cards{gap:20px}
+.card,.album,.bio,.text-block,.calendar,.community-panel,.terms-document{border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);box-shadow:var(--shadow)}
+.card{padding:22px;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}.card::before{display:none}.card:hover{transform:translateY(-3px);box-shadow:0 18px 42px rgba(27,25,48,.1);border-color:#d8d1f6}
+.card h3{color:var(--ink);line-height:1.35}.label{color:var(--purple);font-weight:700;letter-spacing:.06em}
+.button,.button.primary,.quick a{border:0;border-radius:12px;background:var(--purple);color:#fff;font-weight:700;box-shadow:none}.button:hover,.quick a:hover{transform:translateY(-2px);box-shadow:0 8px 18px #6646d82b}
+.home-member-grid{gap:14px}.home-member{border-radius:18px}.home-member img{border-radius:18px}.member-hover-preview{border-color:var(--line);box-shadow:0 24px 64px rgba(24,22,42,.22)}
+.calendar{padding:20px}.cal-cell{border-radius:12px}.cal-cell.has-event{background:#f1edff;color:var(--purple)}
+.banner-carousel{border-radius:24px;box-shadow:var(--shadow)}
+.community-page{padding-top:32px}.community-hero{border-radius:28px;background:linear-gradient(120deg,#fff 0%,#f3f0ff 100%);border:1px solid #e8e3ff;color:var(--ink);box-shadow:var(--shadow)}.community-hero::after{opacity:.12}.community-hero .eyebrow{color:var(--purple)}.community-hero h1{color:var(--ink)}.community-hero p{color:var(--muted)}
+.community-panel{box-shadow:var(--shadow)}.community-entry{border-radius:16px}.community-status{border-radius:12px}
+.footer{border-top:1px solid var(--line);background:#fff;color:var(--muted)}
+:focus-visible{outline:3px solid #8066e9;outline-offset:3px}
+@media(max-width:760px){.wrap{width:min(100% - 28px,600px)}.navrow{min-height:64px}.navlinks{gap:2px}.navlinks>a{padding:7px 9px;font-size:14px}.hero{grid-template-columns:1fr;gap:20px;min-height:auto;padding:28px}.hero-art{min-height:170px}.hero h1{font-size:clamp(32px,9vw,48px)}main.wrap{padding-top:20px}.section{margin-top:32px}.card{padding:18px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card,.button,.quick a{transition:none}}

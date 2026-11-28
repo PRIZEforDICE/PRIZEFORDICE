@@ -4,6 +4,11 @@
   css.href = 'site-extras.css?v=community-news-v4';
   document.head.append(css);
 
+  const visualRefresh = document.createElement('link');
+  visualRefresh.rel = 'stylesheet';
+  visualRefresh.href = 'beus-inspired.css?v=1';
+  document.head.append(visualRefresh);
+
   const extras = document.createElement('script');
   extras.src = 'site-extras.js?v=community-news-v4';
   extras.onload = () => {
