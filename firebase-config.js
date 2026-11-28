@@ -3,7 +3,7 @@ import { getAuth, GoogleAuthProvider } from 'https://www.gstatic.com/firebasejs/
 import { getFirestore } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
 
 export const firebaseConfig = {
-  apiKey: 'AIzaSyB70RYUsQoFvBV-63GI8PEMLRo5QG4hafA',
+  apiKey: 'AIzaSyB70RYUsQoFvBV-63GI8PEMLRoQ5G4hafA',
   authDomain: 'prizefordice-c20c4.firebaseapp.com',
   projectId: 'prizefordice-c20c4',
   storageBucket: 'prizefordice-c20c4.firebasestorage.app',
